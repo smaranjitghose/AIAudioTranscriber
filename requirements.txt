@@ -1,0 +1,6 @@
+streamlit
+streamlit-lottie
+python-ffmpeg
+more-itertools
+transformers
+whisper
