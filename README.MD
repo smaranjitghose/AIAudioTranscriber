@@ -60,10 +60,25 @@ scoop install ffmpeg
 
 - To stop the application, press `CTRL + C` in your terminal
 
-## Demo
+## Demo 👇
 
 **v.0.0.1*
-<p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 alt = "Hosting Icon"></p>
+<p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
+
+
+## Note ✏️
+
+<p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "Note Icon"></p>
+
+- For Streamlit Sharing, mentioning versions of the modules in requirements throws error at times
+- Large Modelv2 outperforms all other versions of Whisper in terms of performance especially in Multi-lingual Transcription. However, it takes a 10 times more V-RAM than the base model and has longer inference time
+- To quickly record audio from system microphone use [this](https://github.com/smaranjitghose/miscellaneous/blob/master/handypython/data/audio/audio_recording.py) Python Script:
+    - Pre-requisities:
+
+        ```
+        pip install pyaudio wave
+        ```
+- [Pixabay](https://pixabay.com/) has a great collection of copyright free, no royalty songs that one can use for testing the application
 
 
 ## Deployment Options 🥊
@@ -80,13 +95,6 @@ scoop install ffmpeg
 **No Free Tier**
 - [Heroku](https://www.heroku.com/)
 - [Digital Ocean](https://www.digitalocean.com/)
-
-## Note ✏️
-
-<p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "SetUp Icon"></p>
-
-- For Streamlit Sharing, mentioning versions of the modules in requirements throws error at times
-- Large Modelv2 outperforms all other versions of Whisper in terms of performance especially in Multi-lingual Transcription. However, it takes a 10 times more V-RAM than the base model and has longer inference time
 
 
 
