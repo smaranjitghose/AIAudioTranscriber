@@ -2,5 +2,6 @@ streamlit
 streamlit-lottie
 ffmpeg-python
 more-itertools
+pytube
 transformers[torch]
 whisper
