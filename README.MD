@@ -62,9 +62,14 @@ scoop install ffmpeg
 
 ## Demo 👇
 
-**v.0.0.1*
+**v.0.0.1**
 <p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
 
+**v.0.0.2** (Transcribing a Youtube Video Explaining Whisper)
+<p align = "center"><img src = "./assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+
+**v.0.0.2** (Transcribing an English Song - Thinkin About It)
+<p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 ## Note ✏️
 
@@ -78,7 +83,31 @@ scoop install ffmpeg
         ```
         pip install pyaudio wave
         ```
+- Whisper is unable to read audio file from disk if ``python-ffmpeg`` or ``ffmpeg`` python pacakges are installed. It only works when ``ffmpeg-python`` python package is installed and not the former too
+
+    ```
+    # Remove all ffmpeg related python packages
+    pip uninstall python-ffmpeg ffmpeg ffmpeg-python
+    # Install the appropriate pacakge for ffmpeg
+    pip install ffmpeg-python
+
+    ```
 - [Pixabay](https://pixabay.com/) has a great collection of copyright free, no royalty songs that one can use for testing the application
+- Poor Performance for Kanada or Telegu songs (often language recognition itself fails) for base model. Example: Kantara movie's [Varaha Roopam](https://www.youtube.com/watch?v=gH_RYRwVrVM) Song
+
+<p align = "center"><img src = "./assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+
+## Future Work 🏗️
+
+
+– [x] Dockerize the application
+– [x] Use Session States and Caching for Better UX
+– [x] Load Audio from remote location
+– [x] Load Audio from a youtube video 
+– [ ] Separated by Timestamps in a pretty display
+– [ ] Speaker Diarization  
+– [ ] Create an executable application for desktop
+– [ ] Optimize for GPU usage 
 
 
 ## Deployment Options 🥊

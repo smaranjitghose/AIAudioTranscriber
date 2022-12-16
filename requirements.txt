@@ -1,6 +1,6 @@
 streamlit
 streamlit-lottie
-python-ffmpeg
+ffmpeg-python
 more-itertools
-transformers
+transformers[torch]
 whisper
