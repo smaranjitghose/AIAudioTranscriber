@@ -100,14 +100,14 @@ scoop install ffmpeg
 ## Future Work 🏗️
 
 
-– [x] Dockerize the application
-– [x] Use Session States and Caching for Better UX
-– [x] Load Audio from remote location
-– [x] Load Audio from a youtube video 
-– [ ] Separated by Timestamps in a pretty display
-– [ ] Speaker Diarization  
-– [ ] Create an executable application for desktop
-– [ ] Optimize for GPU usage 
+- [x] Dockerize the application
+- [x] Use Session States and Caching for Better UX
+- [x] Load Audio from remote location
+- [x] Load Audio from a youtube video 
+- [ ] Separated by Timestamps in a pretty display
+- [ ] Speaker Diarization  
+- [ ] Create an executable application for desktop
+- [ ] Optimize for GPU usage 
 
 
 ## Deployment Options 🥊
