@@ -4,4 +4,4 @@ ffmpeg-python
 more-itertools
 pytube
 transformers[torch]
-whisper
+git+https://github.com/openai/whisper.git

@@ -15,7 +15,7 @@ def main():
     """
     st.set_page_config(
         page_title="AI Audio Transciber",
-        page_icon="▶️",
+        page_icon="🎵",
         layout= "centered",
         menu_items={
         'Get Help': 'https://github.com/smaranjitghose/AIAudioTranscriber',
@@ -71,7 +71,7 @@ def main():
         
         # Nested Component for model size selection
         st.session_state["model_type"] = st.radio(label="Choose Model Size 📦",
-                    options=["base","tiny","small","medium"])
+                    options=["base","tiny","small","medium","large"])
         
         # Nested Optional Component to select segment of the clip to be used for transcription
         extra_configs = st.expander("Choose Segment ✂")
@@ -199,7 +199,6 @@ def get_transcripts():
     try:
         # Load Whisper
         model = get_model(st.session_state["model_type"])
-        print(st.session_state["file_path"])
         # load audio and pad/trim it to fit 30 seconds
         audio = whisper.load_audio(st.session_state["file_path"])
         # audio = whisper.pad_or_trim(audio)
