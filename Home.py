@@ -281,3 +281,12 @@ def transcript_download(out_format:str):
 
 if __name__ == "__main__":
     main()
+
+
+# Burn Video
+
+# import os
+# output_video = "_subtitled.mp4"
+
+# os.system(f"ffmpeg -i {video_file_name} -vf subtitles={subtitle} {output_video}")
+     

@@ -113,6 +113,16 @@ scoop install ffmpeg
 - [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
     - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
 - [ ] Option to burn transcripts to video (in-app)
+
+```python
+import os
+output_video = "final.mp4"
+
+os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
+```
+
+- [ ] Video Summarization from transcripts
+
 - [ ] Speaker Diarization
 - [ ] Word Level Timestamps for transcripts
 - [ ] Generate and Save ASS transcript file
