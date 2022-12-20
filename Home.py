@@ -1,9 +1,13 @@
 import streamlit as st
 import streamlit_lottie
+from streamlit.components.v1 import html
 
 import pathlib
 import requests
+import json
+
 import whisper
+from whisper.utils import write_srt,write_txt,write_vtt
 from pytube import YouTube
 
 
@@ -46,6 +50,7 @@ def main():
         st.session_state["file_path"] = ""
         st.session_state["transcript"] = ""
         st.session_state["lang"] = ""
+        st.session_state["segments"] = []
 
         
     # Create a Input Form Component
@@ -59,13 +64,9 @@ def main():
 
         # Nested Component to take user input for audio file as per seleted mode
         if input_mode=="Upload Audio File":
-            uploaded_file = st.file_uploader(
-                    label="Upload your audio📁",
-                    type=["wav","mp3","m4a"],
-                    accept_multiple_files=False,
-                    )
+            uploaded_file = st.file_uploader(label="Upload your audio📁",type=["wav","mp3","m4a"],accept_multiple_files=False)
         elif input_mode == "Youtube Video URL":
-            yt_url = st.text_input(label="Paste URL for Youtube Video ▶️")
+            yt_url = st.text_input(label="Paste URL for Youtube Video 📋")
         else:
             aud_url = st.text_input(label="Enter URL for Audio File 🔗 ")
         
@@ -81,13 +82,12 @@ def main():
         submitted = st.form_submit_button(label="Generate Transcripts✨")
         if submitted:
 
-            # Create an inputs sub-directory if it does not exist already
+            # Create input and output sub-directories
             APP_DIR = pathlib.Path(__file__).parent.absolute()
             INPUT_DIR = APP_DIR / "input"
             INPUT_DIR.mkdir(exist_ok=True)
 
-
-            # Load Audio File to Server as per input mode
+            # Load Audio from selected Input Source
             if input_mode=="Upload Audio File":
                 if uploaded_file is not None:
                     grab_uploaded_file(uploaded_file, INPUT_DIR)
@@ -127,11 +127,9 @@ def main():
             with open(st.session_state["file_path"],"rb") as f:
                 st.audio(f.read())
             # Download button
-            st.download_button(
-                            label="Download Transcripts📥",
-                            data = st.session_state["transcript"],
-                            file_name="transcripts.txt",
-                            mime = "text/plain")
+            st.markdown("### Save Transcripts📥")
+            out_format = st.radio(label="Choose Format",options=["Text File","SRT File","VTT File"])
+            transcript_download(out_format)
 
 
 
@@ -192,6 +190,23 @@ def grab_online_video(url:str,INPUT_DIR:pathlib.Path):
         st.error("😿 Failed to fetch audio file")
 
 
+
+@st.cache
+def get_model(model_type:str):
+    """
+    Method to load Whisper model to disk
+    """
+    try:
+        print("--------------------------------------------")
+        print("Attempting to load Whisper ...")
+        model = whisper.load_model(model_type)
+        print("Succesfully loaded Whisper")
+        return model
+    except:
+        print("Failed to load model")
+        st.error("😿 Failed to load model")
+
+
 def get_transcripts():
     """
     Method to generate transcripts for the desired audio file
@@ -206,42 +221,63 @@ def get_transcripts():
         result = model.transcribe(audio)
         # Grab the text and update it in session state for the app
         st.session_state["transcript"] = result["text"]
-        st.session_state["lang"] = result["language"]
+        st.session_state["lang"] = match_language(result["language"])
+        st.session_state["segments"] = result["segments"]
+        # st.session_state["transcript"] = result
+        # Save Transcipts:
         st.balloons()
     except:
         st.error("😿 Model Failed to genereate transcripts")
 
-
-@st.cache
-def get_model(model_type:str):
+def match_language(lang_code:str)->str:
     """
-    Method to load Whisper model to disk
+    Method to match the language code detected by Whisper to full name of the language
     """
-    try:
-        print("------------------------------")
-        print("Attempting to load Whisper ...")
-        model = whisper.load_model(model_type)
-        print("Succesfully loaded Whisper")
-        return model
-    except:
-        print("Failed to load model")
-        st.error("😿 Failed to load model")
+    with open("./language.json","rb") as f:
+        lang_data = json.load(f)
+    
+    return lang_data[lang_code].capitalize()
+
+def transcript_download(out_format:str):
+    """
+    Method to save transcipts in VTT format
+    """
+
+    # Create Output sub-directory if it does not exist already
+    APP_DIR = pathlib.Path(__file__).parent.absolute()
+    OUTPUT_DIR = APP_DIR / "output"
+    OUTPUT_DIR.mkdir(exist_ok=True)
+
+    # Generate Transcript file as per choice
+    if out_format == "Text File":
+        # Generate SRT File for Transcript  
+        st.download_button(
+                           label="Click to download 🔽",
+                           data = st.session_state["transcript"],
+                           file_name="transcripts.txt",
+                           mime = "text/plain")
+    elif out_format == "SRT File":
+        # Generate SRT File for Transcript
+        with open(OUTPUT_DIR/ "transcript.srt", "w", encoding ="utf-8") as f:
+            write_srt(st.session_state["segments"], file=f)
+        # Load the SRT File for Download
+        with open(OUTPUT_DIR/ "transcript.srt", "r", encoding ="utf-8") as f:
+            st.download_button(
+                           label="Click to download 🔽",
+                           data = f,
+                           file_name="transcripts.srt")
+    else:
+        # Generate SRT File for Transcript
+        with open(OUTPUT_DIR/ "transcript.vtt", "w", encoding ="utf-8") as f:
+            write_vtt(st.session_state["segments"], file=f)
+        # Load the SRT File for Download
+        with open(OUTPUT_DIR/ "transcript.vtt", "r", encoding ="utf-8") as f:
+            st.download_button(
+                           label="Click to download 🔽",
+                           data = f,
+                           file_name="transcripts.vtt")
 
 
-def detect_language(audio,model):
-    """
-    Method to use Whisper model to determine language of input audio file
-    """
-    try:
-        print("------------------------------")
-        print("Attempting to detect language ...")
-        # make log-Mel spectrogram and move to the same device as the model
-        mel = whisper.log_mel_spectrogram(audio).to(model.device)
-        # detect the spoken language
-        _, probs = model.detect_language(mel)
-
-    except:
-        st.error("😿 Model Failed to detect language")
 
 if __name__ == "__main__":
     main()

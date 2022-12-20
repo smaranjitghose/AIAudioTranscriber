@@ -71,10 +71,16 @@ scoop install ffmpeg
 **v.0.0.2** (Transcribing an English Song - Thinkin About It)
 <p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
+**v.0.0.3** (Transcribing a clip from [Lex Fridman's podcast](https://www.youtube.com/watch?v=A1UjHboEypk))
+
+<p align = "center"><img src = "./assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
+
 ## Note ✏️
 
 <p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "Note Icon"></p>
 
+- To view the generated transcript file(s) in VS Code IDE install [Subtitles Editor](https://marketplace.visualstudio.com/items?itemName=pepri.subtitles-editor) extension
+- To extensively edit/manipulate the generated transcript file(s) use the open source tool [Subtitle Edit](https://www.nikse.dk/subtitleedit) 
 - For Streamlit Sharing, mentioning versions of the modules in requirements throws error at times
 - Large Modelv2 outperforms all other versions of Whisper in terms of performance especially in Multi-lingual Transcription. However, it takes a 10 times more V-RAM than the base model and has longer inference time
 - To quickly record audio from system microphone use [this](https://github.com/smaranjitghose/miscellaneous/blob/master/handypython/data/audio/audio_recording.py) Python Script:
@@ -99,23 +105,28 @@ scoop install ffmpeg
 
 ## Future Work 🏗️
 
-
-- [x] Dockerize the application
+- [x] Download and use audio from Youtube Video
+- [x] Download and use online audio file
 - [x] Use Session States and Caching for Better UX
-- [x] Load Audio from remote location
-- [x] Load Audio from a youtube video 
-- [ ] Separated by Timestamps in a pretty display
-- [ ] Speaker Diarization  
-- [ ] Create an executable application for desktop
-- [ ] Optimize for GPU usage 
-
+- [x] Display the language detected propely (without using the shortcode)
+- [x] Generate Dedicated SRT,VTT files for transcripts (in addition to txt)
+- [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
+    - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
+- [ ] Option to burn transcripts to video (in-app)
+- [ ] Speaker Diarization
+- [ ] Word Level Timestamps for transcripts
+- [ ] Generate and Save ASS transcript file
+- [ ] Option to burn word level timestamp transcripts to video (in-app)
+- [ ] Word Level Speaker Diarization
+- [ ] Re-dockerize the application for Cloud Hosting
+- [ ] Optimize for GPU usage and server storage
 
 ## Deployment Options 🥊
 
 <p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
 **Free Tier**
-- [Streamlit Cloud](https://streamlit.io/cloud)  ✔️
+- [Streamlit Cloud](https://streamlit.io/cloud) 
 - [Railway](https://railway.app/)
 - [Render](https://render.com/)
 - [Fly](https://fly.io/)
