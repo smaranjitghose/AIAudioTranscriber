@@ -135,19 +135,64 @@ os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
 
 <p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
-
 - [Streamlit Cloud](https://streamlit.io/cloud)
 - [HuggingFace Spaces](https://huggingface.co/docs/hub/spaces)
-
 
 - [Fly](https://fly.io/)
 - [Railway](https://railway.app/)
 - [Render](https://render.com/)
 - [Cyclic](https://app.cyclic.sh/#/)
 
-
 - [Heroku](https://www.heroku.com/)
 - [Digital Ocean](https://www.digitalocean.com/)
+
+- Google App Engine
+- Amazon EC2 Instance
+- Azure App
+
+(**Using Google Colab/Kaggle as temporary MVP server**)
+
+- [pyngrok](https://pyngrok.readthedocs.io/en/latest/index.html)
+    - Step 1: Install pyngrok in Google Colab
+
+        ```
+        ! pip install pyngrok
+        ```
+    
+    - Step 2: Sign-up in [ngrok](https://ngrok.com/) and get Authentication Token
+
+    - Step 3: Authenticate
+        
+        ```python
+           from pyngrok import ngrok
+           ngrok.set_auth_token("xxx")
+        ```
+    - Step 4: Load the Streamlit App at port 8051, create a tunnel for it and reveal the public URL for the tunnel
+
+        ```python
+           !nohup streamlit run app.py --server.port 8051 &
+           url = ngrok.connect(8051).public_url
+           print(url)
+        ```
+    
+    - Step 5: Share URL with client
+     
+
+
+- [localtunnel](https://github.com/localtunnel/localtunnel)
+    - Step 1: Install localtunnel
+
+        ```
+        npm install -g localtunnel
+        ```
+    - Step 2
+
+        ```
+        streamlit run Home.py & npx localtunnel --port 8501
+        ```
+    
+    - Step 3: Share URL with client
+
 
 
 
