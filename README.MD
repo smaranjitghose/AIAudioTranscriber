@@ -114,6 +114,7 @@ scoop install ffmpeg
 - [x] Option to limit/increase input model file size
 - [x] Functionality to check the validity URL provided for Youtube Video
 - [x] Add Custom Favicon File
+- [x] Add Scrollable Text Area for Generated Transcripts
 - [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
     - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
 
