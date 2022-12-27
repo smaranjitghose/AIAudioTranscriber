@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit_lottie
-from streamlit.components.v1 import html
+import streamlit_scrollable_textbox as stx
 
 import pathlib
 import requests
@@ -119,7 +119,8 @@ def main():
             st.markdown("### Detected language🌐:")
             st.markdown(f"{st.session_state['lang']}")
             st.markdown("### Generated Transcripts📃: ")
-            st.markdown(st.session_state["transcript"])
+            # st.markdown(st.session_state["transcript"])
+            stx.scrollableTextbox(st.session_state["transcript"], height = 300)
         
         # Display the original Audio
         with col2:

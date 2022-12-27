@@ -1,5 +1,6 @@
 streamlit
 streamlit-lottie
+streamlit-scrollable-textbox
 ffmpeg-python
 more-itertools
 pytube
