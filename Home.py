@@ -75,7 +75,7 @@ def main():
         # Nested Component for model size selection
         st.session_state["model_name"] = st.radio(label="Choose Model Size 📦",
                     options=["Ramanujan","Bose","Raman","Sarabhai","Kalam"])
-        st.session_state["model_type"] = model_list(st.session_state["model_name"])
+        st.session_state["model_type"] = model_list[st.session_state["model_name"]]
         # Nested Optional Component to select segment of the clip to be used for transcription
         extra_configs = st.expander("Choose Segment ✂")
         with extra_configs:
