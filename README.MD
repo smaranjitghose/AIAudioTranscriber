@@ -71,9 +71,13 @@ scoop install ffmpeg
 **v.0.0.2** (Transcribing an English Song - Thinkin About It)
 <p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
-**v.0.0.3** (Transcribing a clip from [Lex Fridman's podcast](https://www.youtube.com/watch?v=A1UjHboEypk))
+**v.0.0.3** (Transcribing a [clip](https://www.youtube.com/watch?v=A1UjHboEypk) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
 
 <p align = "center"><img src = "./assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
+
+**v.0.0.4** (Transcribing another [clip](https://www.youtube.com/watch?v=zxqjlWNVGNM) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
+
+<p align = "center"><img src = "./assets/demo_snapshot_v4.png" height = 300 width = 450 alt = "AITranscriber Snapshot v4"></p>
 
 ## Note ✏️
 
