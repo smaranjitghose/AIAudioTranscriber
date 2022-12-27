@@ -3,5 +3,5 @@ streamlit-lottie
 ffmpeg-python
 more-itertools
 pytube
-transformers[torch]
+transformers
 git+https://github.com/openai/whisper.git

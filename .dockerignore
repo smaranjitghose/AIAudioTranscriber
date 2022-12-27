@@ -5,19 +5,22 @@ LICENSE
 CODE_OF_CONDUCT.MD
 .gitignore
 
+
 # Project Specific
 .streamlit/secrets.toml
 input/
+output/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Configuration Files for Heroku
 Procfile
 setup.sh
 .slugignore
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
 
 # Environments
 .env
