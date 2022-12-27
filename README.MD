@@ -135,14 +135,17 @@ os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
 
 <p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
-**Free Tier**
-- [Streamlit Cloud](https://streamlit.io/cloud) 
+
+- [Streamlit Cloud](https://streamlit.io/cloud)
+- [HuggingFace Spaces](https://huggingface.co/docs/hub/spaces)
+
+
+- [Fly](https://fly.io/)
 - [Railway](https://railway.app/)
 - [Render](https://render.com/)
-- [Fly](https://fly.io/)
 - [Cyclic](https://app.cyclic.sh/#/)
 
-**No Free Tier**
+
 - [Heroku](https://www.heroku.com/)
 - [Digital Ocean](https://www.digitalocean.com/)
 
