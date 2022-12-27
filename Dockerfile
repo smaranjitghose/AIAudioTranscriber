@@ -1,21 +1,21 @@
 # Use the official lightweight Python image
-FROM python:3.9-slim
-# Expose port 
-ENV PORT 8501
-# Setting our working directory to .app
-WORKDIR /app
+FROM python:3.8-slim-buster
+# Add your application code and dependencies
 ADD . /app
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    software-properties-common \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 # Install ffmpeg
-RUN apt-get install -y ffmpeg
-# Install code dependencies
+RUN apt-get update && apt-get install -y ffmpeg
+# Install dependencies for OpenAI's Whisper library
+RUN apt-get update && apt-get install -y libsndfile1
+# Install Git
+RUN apt-get update && apt-get install -y git
+# Update pip and install dependencies
+RUN pip install --upgrade pip
+COPY requirements.txt .
 RUN pip install -r requirements.txt
-# Copying all files over
-COPY . /app
+# Copy the application code
+COPY . .
+# Expose port 8501
+EXPOSE 8501
 # Launch app when container is run
 ENTRYPOINT ["streamlit", "run", "Home.py", "--server.port=8501", "--server.address=0.0.0.0"]
