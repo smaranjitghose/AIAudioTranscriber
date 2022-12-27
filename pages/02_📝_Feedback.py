@@ -5,10 +5,9 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 from utils import *
 
-
 st.set_page_config(
         page_title="AI Audio Transciber",
-        page_icon="🎵",
+        page_icon="./assets/favicon.png",
         layout= "wide",
         initial_sidebar_state="expanded",
         menu_items={

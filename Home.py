@@ -5,6 +5,7 @@ from streamlit.components.v1 import html
 import pathlib
 import requests
 import json
+import re
 
 import whisper
 from whisper.utils import write_srt,write_txt,write_vtt
@@ -19,7 +20,7 @@ def main():
     """
     st.set_page_config(
         page_title="AI Audio Transciber",
-        page_icon=".assets/favicon.png",
+        page_icon="./assets/favicon.png",
         layout= "centered",
         initial_sidebar_state="expanded",
         menu_items={
@@ -97,7 +98,7 @@ def main():
                 else:
                     st.warning("Please🙏 upload a relevant audio file")
             elif input_mode == "Youtube Video URL":
-                if yt_url and yt_url.startswith("https://"):
+                if yt_url and validate_YT_link(yt_url):
                     grab_youtube_video(yt_url, INPUT_DIR )
                     get_transcripts()
                 else:
@@ -282,7 +283,13 @@ def transcript_download(out_format:str):
                            data = f,
                            file_name="transcripts.vtt")
 
-
+def validate_YT_link(url:str):
+    """
+    Function to check if the user provided YouTube URL is valid
+    """
+    pattern = r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+'
+    match = re.match(pattern, url)
+    return match is not None
 
 if __name__ == "__main__":
     main()
