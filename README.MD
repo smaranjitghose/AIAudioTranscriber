@@ -110,8 +110,12 @@ scoop install ffmpeg
 - [x] Use Session States and Caching for Better UX
 - [x] Display the language detected propely (without using the shortcode)
 - [x] Generate Dedicated SRT,VTT files for transcripts (in addition to txt)
+- [x] Update Model options to honour the name of prominent Indian Scientists
+- [x] Option to limit/increase input model file size
+- [x] Add Custom Favicon File
 - [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
     - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
+
 - [ ] Option to burn transcripts to video (in-app)
 
 ```python
@@ -205,4 +209,6 @@ os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
     - [GitHub](https://github.com/openai/whisper)
     - [Paper:Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/pdf/2212.04356.pdf)
 - **Animations**: [LottieFiles](https://lottiefiles.com)
+- **Favicon**: [PNG Repo](https://www.pngrepo.com/svg/235200/artificial-intelligence-brain)
 - **Sample Test Clip 1**: [" Thinkin About It "](https://pixabay.com/music/soft-house-setze-thinkin-about-you-radio-edit-129282/) by [Niklas Setzkorn](https://pixabay.com/users/setze-32054623/) </a> from [Pixabay](https://pixabay.com/)
+

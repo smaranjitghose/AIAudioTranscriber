@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 # Install ffmpeg
-RUN apt install ffmpeg
+RUN apt-get install -y ffmpeg
 # Install code dependencies
 RUN pip install -r requirements.txt
 # Copying all files over

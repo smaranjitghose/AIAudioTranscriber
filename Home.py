@@ -19,7 +19,7 @@ def main():
     """
     st.set_page_config(
         page_title="AI Audio Transciber",
-        page_icon="🎵",
+        page_icon=".assets/favicon.png",
         layout= "centered",
         initial_sidebar_state="expanded",
         menu_items={
@@ -220,7 +220,10 @@ def get_transcripts():
         audio = whisper.load_audio(st.session_state["file_path"])
         # audio = whisper.pad_or_trim(audio)
         # Pass the audio file to the model and generate transcripts
+        print("--------------------------------------------")
+        print("Attempting to generate transcripts ...")
         result = model.transcribe(audio)
+        print("Succesfully generated transcripts")
         # Grab the text and update it in session state for the app
         st.session_state["transcript"] = result["text"]
         st.session_state["lang"] = match_language(result["language"])

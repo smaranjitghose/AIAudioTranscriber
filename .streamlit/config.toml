@@ -5,8 +5,8 @@ primaryColor="#FF6363"
 textColor = "#fafafa"
 font="sans serif"
 
-[browser]
-gatherUsageStats = false
-
 [server]
 maxUploadSize = 100
+
+[browser]
+gatherUsageStats = false
