@@ -322,6 +322,9 @@ flowchart LR
 
 <p align = "center"><img src = "./assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
+## Ideal CI/CD Pipeline for Docker
+
+<p align = "center"><img src = "./assets/Docker_CICD.png" height = 300 width = 450 alt = "Docker CI/CD"></p>
 
 
 ## 🥊Deployment Options 
