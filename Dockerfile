@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y libsndfile1
 # Install Git
 RUN apt-get update && apt-get install -y git
 # Update pip and install dependencies
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip3
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 # Copy the application code from source to destination inside container
