@@ -1,6 +1,6 @@
 # AI Audio Transcriber
 
-<p align = "center"><img src = "./assets/transcriber.gif" height = 300 alt = "Wallet Icon"></p>
+<p align = "center"><img src = "./assets/doc_assets/transcriber.gif" height = 300 alt = "Wallet Icon"></p>
 
 A minimalistic application to generate transcriptions for audio built using Python
 
@@ -10,21 +10,21 @@ A minimalistic application to generate transcriptions for audio built using Pyth
 #### Without Docker
 
 **v.0.0.1**
-<p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
 
 **v.0.0.2** (Transcribing a Youtube Video Explaining Whisper)
-<p align = "center"><img src = "./assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 **v.0.0.2** (Transcribing an English Song - Thinkin About It)
 <p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 **v.0.0.3** (Transcribing a [clip](https://www.youtube.com/watch?v=A1UjHboEypk) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
 
-<p align = "center"><img src = "./assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
 
 **v.0.0.4** (Transcribing another [clip](https://www.youtube.com/watch?v=zxqjlWNVGNM) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
 
-<p align = "center"><img src = "./assets/demo_snapshot_v4.png" height = 300 width = 450 alt = "AITranscriber Snapshot v4"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v4.png" height = 300 width = 450 alt = "AITranscriber Snapshot v4"></p>
 
 
 ## 📝 Basic Application WorkFlow 
@@ -102,12 +102,12 @@ flowchart LR
 
 (**Preferred Pipeline Using GitHub Actions for Docker Image**)
 
-<p align = "center"><img src = "./assets/Docker_CICD.png" height = 300 width = 450 alt = "Docker CI/CD"></p>
+<p align = "center"><img src = "./assets/doc_assets/Docker_CICD.png" height = 300 width = 450 alt = "Docker CI/CD"></p>
 
 
 ## ⚒️ Set-Up Instructions
 
-<p align = "center"><img src = "./assets/setup.gif" height = 300 alt = "SetUp Icon"></p>
+<p align = "center"><img src = "./assets/doc_assets/setup.gif" height = 300 alt = "SetUp Icon"></p>
 
 
 
@@ -213,7 +213,7 @@ flowchart LR
 
 ## 🌏Deployment Options 
 
-<p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
+<p align = "center"><img src = "./assets/doc_assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
 
 - [Streamlit Cloud](https://streamlit.io/cloud)
@@ -394,7 +394,7 @@ flowchart LR
 
 ## ✏️ Note 
 
-<p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "Note Icon"></p>
+<p align = "center"><img src = "./assets/doc_assets/notes.gif" height = 300 alt = "Note Icon"></p>
 
 - To view the generated transcript file(s) in VS Code IDE install [Subtitles Editor](https://marketplace.visualstudio.com/items?itemName=pepri.subtitles-editor) extension
 - To extensively edit/manipulate the generated transcript file(s) use the open source tool [Subtitle Edit](https://www.nikse.dk/subtitleedit) 
@@ -418,7 +418,7 @@ flowchart LR
 - [Pixabay](https://pixabay.com/) has a great collection of copyright free, no royalty songs that one can use for testing the application
 - Poor Performance for Kanada or Telegu songs (often language recognition itself fails) for base model. Example: Kantara movie's [Varaha Roopam](https://www.youtube.com/watch?v=gH_RYRwVrVM) Song
 
-<p align = "center"><img src = "./assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 ## 🙏 Acknowledgements 
 

@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y git
 # Update pip and install dependencies
 RUN pip install --upgrade pip
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 # Copy the application code from source to destination inside container
 COPY . .
 # Expose port 8501
