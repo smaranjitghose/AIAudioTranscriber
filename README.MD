@@ -4,6 +4,29 @@
 
 A minimalistic application to generate transcriptions for audio built using Python
 
+## 👇 Product Snapshots
+
+
+#### Without Docker
+
+**v.0.0.1**
+<p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
+
+**v.0.0.2** (Transcribing a Youtube Video Explaining Whisper)
+<p align = "center"><img src = "./assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+
+**v.0.0.2** (Transcribing an English Song - Thinkin About It)
+<p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+
+**v.0.0.3** (Transcribing a [clip](https://www.youtube.com/watch?v=A1UjHboEypk) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
+
+<p align = "center"><img src = "./assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
+
+**v.0.0.4** (Transcribing another [clip](https://www.youtube.com/watch?v=zxqjlWNVGNM) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
+
+<p align = "center"><img src = "./assets/demo_snapshot_v4.png" height = 300 width = 450 alt = "AITranscriber Snapshot v4"></p>
+
+
 ## 📝 Basic Application WorkFlow 
 
 ```mermaid
@@ -75,27 +98,11 @@ flowchart LR
     end
 ```
 
-## 👇 Product Snapshots
+## 🥊CI/CD
 
+(**Preferred Pipeline Using GitHub Actions for Docker Image**)
 
-#### Without Docker
-
-**v.0.0.1**
-<p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
-
-**v.0.0.2** (Transcribing a Youtube Video Explaining Whisper)
-<p align = "center"><img src = "./assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
-
-**v.0.0.2** (Transcribing an English Song - Thinkin About It)
-<p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
-
-**v.0.0.3** (Transcribing a [clip](https://www.youtube.com/watch?v=A1UjHboEypk) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
-
-<p align = "center"><img src = "./assets/demo_snapshot_v3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v3"></p>
-
-**v.0.0.4** (Transcribing another [clip](https://www.youtube.com/watch?v=zxqjlWNVGNM) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
-
-<p align = "center"><img src = "./assets/demo_snapshot_v4.png" height = 300 width = 450 alt = "AITranscriber Snapshot v4"></p>
+<p align = "center"><img src = "./assets/Docker_CICD.png" height = 300 width = 450 alt = "Docker CI/CD"></p>
 
 
 ## ⚒️ Set-Up Instructions
@@ -202,132 +209,9 @@ flowchart LR
     > - If you used a different host port in the above command then navigate to that one, ``http://localhost:<host_port>``
     > - To stop the container, in the terminal check the containter name: ``docker ps --all``
     > - Now use container name with the command:  ``docker stop <container_name>``
-/
-## 🏗️ Future Work 
-
-- [x] Download and use audio from Youtube Video
-- [x] Download and use online audio file
-- [x] Use Session States and Caching for Better UX
-- [x] Display the language detected propely (without using the shortcode)
-- [x] Generate Dedicated SRT,VTT files for transcripts (in addition to txt)
-- [x] Update Model options to honour the name of prominent Indian Scientists
-- [x] Option to limit/increase input model file size
-- [x] Functionality to check the validity URL provided for Youtube Video
-- [x] Add Custom Favicon File
-- [x] Add Scrollable Text Area for Generated Transcripts
-- [x] Containerize the Application with Docker and troubleshoot locally
-- [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
-    - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
-
-- [ ] Test Application by spinning up it's Container on Google Cloud Run
-    - [ ] Push to a particular Docker Image Registry
-    - [ ] Set TTL
-    - [ ] Play around with system resources
-    - [ ] Test with custom domain
-- [ ] Add Google Cloud's CI/CD to repo on push/pull requests
-    - [ ] Use cloudbuild.yaml file
-    - [ ] Update build time to 2 hours
-- [ ] Optimize Docker Image Size
-- [ ] Better CI/CD
-- [ ] Kubernetes Upgrade
-- [ ] Better GitHub Actions
-
-**More Features**:
-
-- [ ] Burn transcripts to user-uploaded video
-        ```python
-        import os
-        output_video = "final.mp4"
-
-        os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
-        ```
-- [ ] Summarize subtitles
-- [ ] Sentiment analysis on video summary
-- [ ] Batch transcript generation + summary + sentiment analysis
-- [ ] Dashboard for video review(s)
 
 
-**Speaker Diarization: Only if Community requires**
-
-- [ ] Incorporate Speaker Diarization for Podcast/Vlog/Conversational Clips
-- [ ] Test it with burning transcripts to user uploaded video
-- [ ] Test it with transcript summarization
-
-**More Aligned Subtitles: Only if Community requires**
-
-- [ ] Word Level Timestamps for transcripts + Generate ASS Transcript File
-- [ ] Test it with burning transcripts to user uploaded video
-- [ ] Test it with previous speaker diarization
-- [ ] Test it with transcript summarization
-
-
-- [ ] Improve UI Natively in Streamlit
-
-**API Development: Only if Community requires**
-
-- [ ] Build API for model inference in FastAPI to handle requests asynchronously (on a different branch perhaps)
-- [ ] Containerize the API with Docker
-- [ ] Troubleshoot Docker Container for API
-- [ ] Host the API on Google/AWS/Linode/Heroku
-- [ ] Perform basic CI/CD for API 
-- [ ] Rehost Streamlit Application on a different service (Reduce it to client side for most operations)
-- [ ] Play around with pyScript
-
-**Front End Development: Only if Community requires**
-
-- [ ] Build Basic React Front end
-- [ ] Connect React Front End to FastAPI
-- [ ] Add Loader Animation
-- [ ] Add Animations for model inference times
-- [ ] Handling Errors in Front End/API
-- [ ] Upload File Component
-- [ ] Download Button(s)
-- [ ] Feedback Form
-- [ ] Contact Page
-- [ ] About Page
-- [ ] Home Page
-- [ ] Stripe Integration
-- [ ] Improve Navbar UI
-- [ ] 404 Page
-- [ ] Footer UI
-- [ ] Scrollbar UI
-- [ ] SEO
-
-
-## ✏️ Note 
-
-<p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "Note Icon"></p>
-
-- To view the generated transcript file(s) in VS Code IDE install [Subtitles Editor](https://marketplace.visualstudio.com/items?itemName=pepri.subtitles-editor) extension
-- To extensively edit/manipulate the generated transcript file(s) use the open source tool [Subtitle Edit](https://www.nikse.dk/subtitleedit) 
-- For Streamlit Sharing, mentioning versions of the modules in requirements throws error at times
-- Large Modelv2 outperforms all other versions of Whisper in terms of performance especially in Multi-lingual Transcription. However, it takes a 10 times more V-RAM than the base model and has longer inference time
-- To quickly record audio from system microphone use [this](https://github.com/smaranjitghose/miscellaneous/blob/master/handypython/data/audio/audio_recording.py) Python Script:
-    - Pre-requisities:
-
-        ```
-        pip install pyaudio wave
-        ```
-- Whisper is unable to read audio file from disk if ``python-ffmpeg`` or ``ffmpeg`` python pacakges are installed. It only works when ``ffmpeg-python`` python package is installed and not the former too
-
-    ```
-    # Remove all ffmpeg related python packages
-    pip uninstall python-ffmpeg ffmpeg ffmpeg-python
-    # Install the appropriate pacakge for ffmpeg
-    pip install ffmpeg-python
-
-    ```
-- [Pixabay](https://pixabay.com/) has a great collection of copyright free, no royalty songs that one can use for testing the application
-- Poor Performance for Kanada or Telegu songs (often language recognition itself fails) for base model. Example: Kantara movie's [Varaha Roopam](https://www.youtube.com/watch?v=gH_RYRwVrVM) Song
-
-<p align = "center"><img src = "./assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
-
-## Ideal CI/CD Pipeline for Docker
-
-<p align = "center"><img src = "./assets/Docker_CICD.png" height = 300 width = 450 alt = "Docker CI/CD"></p>
-
-
-## 🥊Deployment Options 
+## 🌏Deployment Options 
 
 <p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
@@ -407,6 +291,134 @@ flowchart LR
 
 - NGINX + Cloudfare/ngrok
 
+## 🏗️ Future Work 
+
+- [x] Download and use audio from Youtube Video
+- [x] Download and use online audio file
+- [x] Use Session States and Caching for Better UX
+- [x] Display the language detected propely (without using the shortcode)
+- [x] Generate Dedicated SRT,VTT files for transcripts (in addition to txt)
+- [x] Update Model options to honour the name of prominent Indian Scientists
+- [x] Option to limit/increase input model file size
+- [x] Functionality to check the validity URL provided for Youtube Video
+- [x] Add Custom Favicon File
+- [x] Add Scrollable Text Area for Generated Transcripts
+- [x] Containerize the Application with Docker
+- [x] Troubleshoot Docker Container locally
+- [x] Create Basic Workflow on GitHub Actions for Docker Image Build
+- [x] Create Comprehensive Workflow on GitHub Actions for Docker Image Build
+- [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
+    - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
+
+- [ ] Test Application by spinning up it's Container on Google Cloud Run
+    - [ ] Push to a particular Docker Image Registry
+    - [ ] Set TTL
+    - [ ] Play around with system resources
+    - [ ] Test with custom domain
+- [ ] Add Google Cloud's CI/CD to repo on push/pull requests
+    - [ ] Use cloudbuild.yaml file
+    - [ ] Update build time to 2 hours
+- [ ] Optimize Docker Image Size
+- [ ] Better CI/CD
+- [ ] Kubernetes Upgrade
+- [ ] Better GitHub Actions
+
+**More Features**:
+
+- [ ] Burn transcripts to user-uploaded video
+        ```python
+        import os
+        output_video = "final.mp4"
+
+        os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
+        ```
+- [ ] Summarize subtitles
+- [ ] Sentiment analysis on video summary
+- [ ] Batch transcript generation + summary + sentiment analysis
+- [ ] Dashboard for video review(s)
+
+
+**Speaker Diarization: Only if Community requires**
+
+- [ ] Incorporate Speaker Diarization for Podcast/Vlog/Conversational Clips
+- [ ] Test it with burning transcripts to user uploaded video
+- [ ] Test it with transcript summarization
+
+**More Aligned Subtitles: Only if Community requires**
+
+- [ ] Word Level Timestamps for transcripts + Generate ASS Transcript File
+- [ ] Test it with burning transcripts to user uploaded video
+- [ ] Test it with previous speaker diarization
+- [ ] Test it with transcript summarization
+
+
+- [ ] Improve UI Natively in Streamlit
+
+**API Development: Only if Community requires**
+
+- [ ] Build API for model inference in FastAPI to handle requests asynchronously (on a different branch perhaps)
+- [ ] Containerize the API with Docker
+- [ ] Troubleshoot Docker Container for API
+- [ ] Host the API on Google/AWS/Linode/Heroku
+- [ ] Perform basic CI/CD for API 
+- [ ] Rehost Streamlit Application on a different service (Reduce it to client side for most operations)
+- [ ] Play around with pyScript
+
+**Front End Development: Only if Community requires**
+
+- [ ] Build Basic React Front end
+- [ ] Connect React Front End to FastAPI
+- [ ] Add Loader Animation
+- [ ] Add Animations for model inference times
+- [ ] Handling Errors in Front End/API
+- [ ] Upload File Component
+- [ ] Download Button(s)
+- [ ] Feedback Form
+- [ ] Contact Page
+- [ ] About Page
+- [ ] Home Page
+- [ ] Stripe Integration
+- [ ] Improve Navbar UI
+- [ ] 404 Page
+- [ ] Footer UI
+- [ ] Scrollbar UI
+- [ ] SEO
+
+**CI/CD Pipeline (GitHub Actions)**
+- [ ] SAST (Optional)
+- [ ] Kubernetes Smoke Test (Optional)
+- [ ] Using Super Linter for Linting (Optional)
+- [ ] Unit Tests (Optional)
+- [ ] Integration Test (Optional)
+
+
+## ✏️ Note 
+
+<p align = "center"><img src = "./assets/notes.gif" height = 300 alt = "Note Icon"></p>
+
+- To view the generated transcript file(s) in VS Code IDE install [Subtitles Editor](https://marketplace.visualstudio.com/items?itemName=pepri.subtitles-editor) extension
+- To extensively edit/manipulate the generated transcript file(s) use the open source tool [Subtitle Edit](https://www.nikse.dk/subtitleedit) 
+- For Streamlit Sharing, mentioning versions of the modules in requirements throws error at times
+- Large Modelv2 outperforms all other versions of Whisper in terms of performance especially in Multi-lingual Transcription. However, it takes a 10 times more V-RAM than the base model and has longer inference time
+- To quickly record audio from system microphone use [this](https://github.com/smaranjitghose/miscellaneous/blob/master/handypython/data/audio/audio_recording.py) Python Script:
+    - Pre-requisities:
+
+        ```
+        pip install pyaudio wave
+        ```
+- Whisper is unable to read audio file from disk if ``python-ffmpeg`` or ``ffmpeg`` python pacakges are installed. It only works when ``ffmpeg-python`` python package is installed and not the former too
+
+    ```
+    # Remove all ffmpeg related python packages
+    pip uninstall python-ffmpeg ffmpeg ffmpeg-python
+    # Install the appropriate pacakge for ffmpeg
+    pip install ffmpeg-python
+
+    ```
+- [Pixabay](https://pixabay.com/) has a great collection of copyright free, no royalty songs that one can use for testing the application
+- Poor Performance for Kanada or Telegu songs (often language recognition itself fails) for base model. Example: Kantara movie's [Varaha Roopam](https://www.youtube.com/watch?v=gH_RYRwVrVM) Song
+
+<p align = "center"><img src = "./assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 ## 🙏 Acknowledgements 
 
