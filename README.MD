@@ -328,6 +328,7 @@ flowchart LR
 
 <p align = "center"><img src = "./assets/hosting.gif" height = 300 alt = "Hosting Icon"></p>
 
+
 - [Streamlit Cloud](https://streamlit.io/cloud)
 - [HuggingFace Spaces](https://huggingface.co/docs/hub/spaces)
 
@@ -339,7 +340,19 @@ flowchart LR
 - [Heroku](https://www.heroku.com/)
 - [Digital Ocean](https://www.digitalocean.com/)
 
-- Google App Engine
+- Google Cloud Run
+    - Install Google Cloud CLI
+    - Create an Account on Google Cloud
+    - Create a New Project
+    - Build and Push Docker Image to Google Container Registry
+        ```
+        gcloud builds submit --tag gcr.io/<ProjectName>/<AppName>  --project=<ProjectName>
+        ```
+    - Deploy the Docker Container
+        ```
+        gcloud run deploy --image gcr.io/<ProjectName>/<AppName> --platform managed --project=<ProjectName> --allow-unauthenticated
+        ```
+
 - Amazon EC2 Instance
 - Azure App
 

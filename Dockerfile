@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y git
 RUN pip install --upgrade pip
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-# Copy the application code
+# Copy the application code from source to destination inside container
 COPY . .
 # Expose port 8501
 EXPOSE 8501
