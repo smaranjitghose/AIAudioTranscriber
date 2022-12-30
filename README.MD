@@ -440,7 +440,18 @@ flowchart LR
 
 - Base Image with python <= 3.9 raises [issue](https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta/71735458#71735458) with module `backports.zoneinfo`and pip fails
 
-- Checking Docker Image Build for Multi-Platform is too time consuming for the current application
+
+- To build and test multi-architecture docker images locally,
+    - Create a new buildx instance
+        ```
+        docker buildx create
+        ```
+    - Build a new docker image for multi-architecture support
+        ```
+         docker buildx build --platform linux/arm64,linux/amd64 -t aitranscriber:multi-architecture -f Dockerfile . 
+        ```
+
+- Checking Docker Image Build for multi-architecture is too time consuming for the current application and disabled
 
 
 ## 🙏 Acknowledgements 
