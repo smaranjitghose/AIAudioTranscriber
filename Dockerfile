@@ -5,9 +5,11 @@ ADD . /app
 WORKDIR /app
 # Install ffmpeg, git and other dependencies for Whisper
 RUN apt-get update && apt-get install -y \
+    build-essential \
     ffmpeg \
+    git \ 
     libsndfile1 \
-    git \
+    software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 # Update pip and install dependencies
 RUN pip install --upgrade pip
