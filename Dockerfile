@@ -1,14 +1,14 @@
 # Use the official lightweight Python image
-FROM python:3.8-slim-buster
+FROM python:3.9.16-slim-bullseye
 # Add your application code and dependencies
 ADD . /app
 WORKDIR /app
-# Install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg
-# Install dependencies for OpenAI's Whisper library
-RUN apt-get update && apt-get install -y libsndfile1
-# Install Git
-RUN apt-get update && apt-get install -y git
+# Install ffmpeg, git and other dependencies for Whisper
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsndfile1 \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 # Update pip and install dependencies
 RUN pip install --upgrade pip
 COPY requirements.txt .
