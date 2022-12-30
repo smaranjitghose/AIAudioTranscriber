@@ -444,7 +444,7 @@ flowchart LR
 - To build and test multi-architecture docker images locally,
     - Create a new buildx instance
         ```
-        docker buildx create
+        docker buildx create --use
         ```
     - Build a new docker image for multi-architecture support
         ```
