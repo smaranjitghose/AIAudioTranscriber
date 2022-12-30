@@ -168,15 +168,12 @@ flowchart LR
     ```
 
 - Run the Web application
-
     ```
     streamlit run .\Home.py
     ```
-
-- If the app does not load by itself in your default browser, open a browser of your choice and navigate to  `http://localhost:8501`
-
-- To stop the application, press `CTRL + C` in your terminal
-
+    > **Note**:
+    > - If the app does not load by itself in your default browser, open a browser of your choice and navigate to  `http://localhost:8501`
+    > - To stop the application, press `CTRL + C` in your terminal
 
 #### **B. Using Docker**
 
@@ -200,24 +197,12 @@ flowchart LR
     > - `docker run -p <hostport>:<8501> <container_name>:<tag_name>`
     > - In the above command, you can play around with which port of your host system you wish to map to the 8501 port of the container 
     > - If you used a different docker image name and/or different tag, make sure to update it in the command
-- Open your preferred Web Browser and navigate to the URL ``http://localhost:8501`` to use the application 
+- Open your preferred Web Browser and navigate to ``http://localhost:8501`` 
     > **Note**:
     > - If you used a different host port in the above command then navigate to that one, ``http://localhost:<host_port>``
-    > - To stop the container, in the terminal check the containter name
-        >   ```
-        >   docker ps --all
-        >   ```
-    > - Now use container name with the following command
-         >   ```
-         >   docker stop <container_name>
-         >   ```
-    > - Any time in the future, you wish to the application, you can simply use the same docker container without having to create a new one or building the image again
-         >   ```
-         >   docker start <container_name>
-         >   ```
-    > - If you decide to rebuild the image to incorporate future updates of the codebase in the application, the procedure is same. Perhaps you may wish to use a different tag to uniquely identify the different images
-    > To delete a docker image and docker container, refer to this [guide](https://linuxhandbook.com/remove-docker-images/)
-
+    > - To stop the container, in the terminal check the containter name: ``docker ps --all``
+    > - Now use container name with the command:  ``docker stop <container_name>``
+/
 ## 🏗️ Future Work 
 
 - [x] Download and use audio from Youtube Video
