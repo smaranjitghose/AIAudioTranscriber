@@ -5,14 +5,13 @@ import streamlit_scrollable_textbox as stx
 import pathlib
 import requests
 import json
-import re
 
 import whisper
 from whisper.utils import write_srt,write_txt,write_vtt
 from pytube import YouTube
 
 
-from utils import lottie_local,css_local,hide_footer,st_lottie
+from utils import *
 
 def main():
     """
@@ -284,13 +283,7 @@ def transcript_download(out_format:str):
                            data = f,
                            file_name="transcripts.vtt")
 
-def validate_YT_link(url:str):
-    """
-    Function to check if the user provided YouTube URL is valid
-    """
-    pattern = r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+'
-    match = re.match(pattern, url)
-    return match is not None
+
 
 if __name__ == "__main__":
     main()

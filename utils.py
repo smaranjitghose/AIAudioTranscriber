@@ -1,6 +1,9 @@
 import streamlit as st
 from streamlit_lottie import st_lottie 
+
+import pathlib
 import json
+import re
 
 def css_local(filepath:str):
     """
@@ -58,3 +61,14 @@ def hide_footer():
             </style>
             """
     st.markdown(hide_st_style, unsafe_allow_html=True)
+
+def validate_YT_link(url:str):
+    """
+    Function to check if the user provided YouTube URL is valid
+    """
+    pattern = r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9]+'
+    match = re.match(pattern, url)
+    return match is not None
+
+
+

@@ -77,6 +77,9 @@ flowchart LR
 
 ## 👇 Product Snapshots
 
+
+#### Without Docker
+
 **v.0.0.1**
 <p align = "center"><img src = "./assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
 
@@ -99,7 +102,7 @@ flowchart LR
 
 <p align = "center"><img src = "./assets/setup.gif" height = 300 alt = "SetUp Icon"></p>
 
-- Ensure you have the latest stable version of [Python](https://www.python.org/downloads/) in your system
+
 
 - Open your terminal / command prompt. 
 
@@ -113,32 +116,58 @@ flowchart LR
     cd AIAudioTranscriber
     ```
 
+#### **A. Without using Docker**
+
+- Ensure you have any version of [Python](https://www.python.org/downloads/) below 3.10 installed in your system and you have ``virtualenv`` package installed
+
+    ```
+    which python
+    ```
+
+    ```
+    pip install virtualenv
+    ```
+
+- Create a new virtual environment
+    ```
+    python -m venv env
+    ```
+
+- Activate virtual enviroment
+    - On Mac/Linux
+        ```terminal
+        source env/bin/activate
+        ```
+    - On Windows
+        ```terminal
+        env/Scripts/Activate.ps1 
+        ```
+
+- Install ffmpeg in your local syste,
+    - On Windows using [Chocolatey](https://chocolatey.org/)
+        ```terminal
+        choco install ffmpeg
+        ```
+    - On MacOS using [Homebrew](https://brew.sh/)
+        ```terminal
+        brew install ffmpeg 
+        ```
+    - On Debian/Ubuntu
+        ```terminal
+        sudo apt update && sudo install ffmpeg
+        ```
+    - On Arch Linux
+        ```terminal
+        sudo pacman -S ffmpeg 
+        ```
+
 - Install the dependencies
 
     ```
     pip install -r requirements.txt
     ```
 
-- Install ffmpeg on your system
-
-```
-# on Ubuntu or Debian
-sudo apt update && sudo apt install ffmpeg
-
-# on Arch Linux
-sudo pacman -S ffmpeg
-
-# on MacOS using Homebrew (https://brew.sh/)
-brew install ffmpeg
-
-# on Windows using Chocolatey (https://chocolatey.org/)
-choco install ffmpeg
-
-# on Windows using Scoop (https://scoop.sh/)
-scoop install ffmpeg
-```
-
-- Load the application
+- Run the Web application
 
     ```
     streamlit run .\Home.py
@@ -148,6 +177,46 @@ scoop install ffmpeg
 
 - To stop the application, press `CTRL + C` in your terminal
 
+
+#### **B. Using Docker**
+
+- Make sure you have Docker installed on your system. Refer the documentation [here](https://docs.docker.com/desktop/) if you need assistance setting up.
+- Build a docker image
+    ```
+    docker run -t aitranscriber:v0.0.4 .
+    ```
+    > **Note**:
+    > - You may give any name instead of aitranscriber and any tag instead of v0.0.4
+    > - Depending on your system it takes a few minutes to successfully build the image
+- Once complete, check the docker image
+    ```
+    docker images
+    ```
+- Create and run a Docker Container for the image
+    ```
+    docker run -p 8501:8501 aitranscriber:v0.0.4
+    ```
+    > **Note**:
+    > - `docker run -p <hostport>:<8501> <container_name>:<tag_name>`
+    > - In the above command, you can play around with which port of your host system you wish to map to the 8501 port of the container 
+    > - If you used a different docker image name and/or different tag, make sure to update it in the command
+- Open your preferred Web Browser and navigate to the URL ``http://localhost:8501`` to use the application 
+    > **Note**:
+    > - If you used a different host port in the above command then navigate to that one, ``http://localhost:<host_port>``
+    > - To stop the container, in the terminal check the containter name
+        >   ```
+        >   docker ps --all
+        >   ```
+    > - Now use container name with the following command
+         >   ```
+         >   docker stop <container_name>
+         >   ```
+    > - Any time in the future, you wish to the application, you can simply use the same docker container without having to create a new one or building the image again
+         >   ```
+         >   docker start <container_name>
+         >   ```
+    > - If you decide to rebuild the image to incorporate future updates of the codebase in the application, the procedure is same. Perhaps you may wish to use a different tag to uniquely identify the different images
+    > To delete a docker image and docker container, refer to this [guide](https://linuxhandbook.com/remove-docker-images/)
 
 ## 🏗️ Future Work 
 
@@ -161,29 +230,83 @@ scoop install ffmpeg
 - [x] Functionality to check the validity URL provided for Youtube Video
 - [x] Add Custom Favicon File
 - [x] Add Scrollable Text Area for Generated Transcripts
+- [x] Containerize the Application with Docker and troubleshoot locally
 - [ ] Resolve bug: Youtube video with multiple audios should download default audio. 
     - Example: This [clip](https://www.youtube.com/watch?v=93L6gDVRrUY) from Huberman Lab is in English yet the script fetches the spanish audio codec from Youtube  
 
-- [ ] Option to burn transcripts to video (in-app)
+- [ ] Test Application by spinning up it's Container on Google Cloud Run
+    - [ ] Push to a particular Docker Image Registry
+    - [ ] Set TTL
+    - [ ] Play around with system resources
+    - [ ] Test with custom domain
+- [ ] Add Google Cloud's CI/CD to repo on push/pull requests
+    - [ ] Use cloudbuild.yaml file
+    - [ ] Update build time to 2 hours
+- [ ] Optimize Docker Image Size
+- [ ] Better CI/CD
+- [ ] Kubernetes Upgrade
+- [ ] Better GitHub Actions
 
-```python
-import os
-output_video = "final.mp4"
+**More Features**:
 
-os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
-```
+- [ ] Burn transcripts to user-uploaded video
+        ```python
+        import os
+        output_video = "final.mp4"
 
-- [ ] Video Summarization from transcripts
-
-- [ ] Speaker Diarization
-- [ ] Word Level Timestamps for transcripts
-- [ ] Generate and Save ASS transcript file
-- [ ] Option to burn word level timestamp transcripts to video (in-app)
-- [ ] Word Level Speaker Diarization
-- [ ] Re-dockerize the application for Cloud Hosting
-- [ ] Optimize for GPU usage and server storage
+        os.system(f"ffmpeg -i {input_video} -vf subtitles={subtitle} {output_video}")
+        ```
+- [ ] Summarize subtitles
+- [ ] Sentiment analysis on video summary
+- [ ] Batch transcript generation + summary + sentiment analysis
+- [ ] Dashboard for video review(s)
 
 
+**Speaker Diarization: Only if Community requires**
+
+- [ ] Incorporate Speaker Diarization for Podcast/Vlog/Conversational Clips
+- [ ] Test it with burning transcripts to user uploaded video
+- [ ] Test it with transcript summarization
+
+**More Aligned Subtitles: Only if Community requires**
+
+- [ ] Word Level Timestamps for transcripts + Generate ASS Transcript File
+- [ ] Test it with burning transcripts to user uploaded video
+- [ ] Test it with previous speaker diarization
+- [ ] Test it with transcript summarization
+
+
+- [ ] Improve UI Natively in Streamlit
+
+**API Development: Only if Community requires**
+
+- [ ] Build API for model inference in FastAPI to handle requests asynchronously (on a different branch perhaps)
+- [ ] Containerize the API with Docker
+- [ ] Troubleshoot Docker Container for API
+- [ ] Host the API on Google/AWS/Linode/Heroku
+- [ ] Perform basic CI/CD for API 
+- [ ] Rehost Streamlit Application on a different service (Reduce it to client side for most operations)
+- [ ] Play around with pyScript
+
+**Front End Development: Only if Community requires**
+
+- [ ] Build Basic React Front end
+- [ ] Connect React Front End to FastAPI
+- [ ] Add Loader Animation
+- [ ] Add Animations for model inference times
+- [ ] Handling Errors in Front End/API
+- [ ] Upload File Component
+- [ ] Download Button(s)
+- [ ] Feedback Form
+- [ ] Contact Page
+- [ ] About Page
+- [ ] Home Page
+- [ ] Stripe Integration
+- [ ] Improve Navbar UI
+- [ ] 404 Page
+- [ ] Footer UI
+- [ ] Scrollbar UI
+- [ ] SEO
 
 
 ## ✏️ Note 

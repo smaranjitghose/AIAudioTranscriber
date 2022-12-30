@@ -4,6 +4,9 @@ README.MD
 LICENSE
 CODE_OF_CONDUCT.MD
 .gitignore
+.github/*
+
+environment.yml
 
 
 # Project Specific
