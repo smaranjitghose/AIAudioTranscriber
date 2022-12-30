@@ -41,5 +41,11 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha, mode=max
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-        
-        
+      -
+        name: Run Trivy vulnerability scanner for all CVEs (non-blocking)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{github.run_id}}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
