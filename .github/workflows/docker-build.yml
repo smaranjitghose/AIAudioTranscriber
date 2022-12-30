@@ -4,9 +4,23 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - 'README.md'
+      - 'assets/doc_assets/**'
+      - 'LICENSE'
+      - 'CODE_OF_CONDUCT.MD'
+      - '.github/*yml'
+      - '.gitignore'
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - 'README.md'
+      - 'assets/doc_assets/**'
+      - 'LICENSE'
+      - 'CODE_OF_CONDUCT.MD'
+      - '.github/*yml'
+      - '.gitignore'
 
 jobs:
   build:
@@ -16,9 +30,9 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+      # -
+      #   name: Set up QEMU
+      #   uses: docker/setup-qemu-action@v2
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -40,7 +54,7 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPONAME }}:latest
           cache-from: type=gha
           cache-to: type=gha, mode=max
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          # platforms: linux/amd64,linux/arm64,linux/arm/v7
       -
         name: Run Trivy vulnerability scanner for all CVEs (non-blocking)
         uses: aquasecurity/trivy-action@master

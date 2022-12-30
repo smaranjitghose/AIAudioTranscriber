@@ -420,6 +420,29 @@ flowchart LR
 
 <p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v2_3.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
+
+#### Docker Container and CI/CD
+
+- Exclude as much irrelevant files as possible with ```.dockerignore``` such as README.MD, LICENSE, snapshots, notebooks, input,output,logs, etc
+
+- Minimize the number of layers (Created by RUN, COPY and ADD)
+- Always combine ``RUN apt-get update`` with ``apt-get install`` in the same RUN statement. Using ``apt-get update`` alone in a RUN statement causes caching issues and subsequent ``apt-get install`` instructions fail.
+
+- Using ``RUN apt-get update && apt-get install -y`` ensures your Dockerfile installs the latest package versions with no further coding or manual intervention. This technique is known as “cache busting”. 
+
+- In addition, when you clean up the apt cache by removing ``/var/lib/apt/lists`` it reduces the image size, since the apt cache is not stored in a layer. 
+
+- Python Docker Image Info:
+    - Images tagged with `stretch`/`buster`/`jessie`/`buster`/`bullseye` are codenames for different [Debian Operating System](https://wiki.debian.org/DebianReleases) Production releases.
+    - `bullseye` being version 11, buster being version 10, and so on. (2022) 
+    - `bookworm`, `trixy` and `forky` are work-in-progress releases which may not be stable yet
+    - `-slim` - only installs the minimal packages needed to run the particular tool.
+
+- Base Image with python <= 3.9 raises [issue](https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta/71735458#71735458) with module `backports.zoneinfo`and pip fails
+
+- Checking Docker Image Build for Multi-Platform is too time consuming for the current application
+
+
 ## 🙏 Acknowledgements 
 
 <p align = "center"><img src = "https://media.giphy.com/media/1gQ6f5kJdBtGPSmdgS/giphy.gif" height = 300 alt = "Acknowledgment Icon"></p>

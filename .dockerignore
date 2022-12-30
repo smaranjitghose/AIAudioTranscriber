@@ -5,6 +5,7 @@ LICENSE
 CODE_OF_CONDUCT.MD
 .gitignore
 .github/*
+assets/doc_assets/**
 
 environment.yml
 
