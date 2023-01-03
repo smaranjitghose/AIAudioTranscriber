@@ -4,10 +4,7 @@
 
 A minimalistic application to generate transcriptions for audio built using Python
 
-## 👇 Product Snapshots
-
-
-#### Without Docker
+## 🚀 Demo
 
 **v.0.0.1**
 <p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v1.png" height = 300 width = 450 alt = "AITranscriber Snapshot"></p>
@@ -452,6 +449,11 @@ flowchart LR
         ```
 
 - Checking Docker Image Build for multi-architecture is too time consuming for the current application and disabled
+
+
+## 🛡️ License
+
+This project is licensed under the GNU Affero General Public License v3.0 License - see the [`LICENSE`](LICENSE) file for details.
 
 
 ## 🙏 Acknowledgements 
