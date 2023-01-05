@@ -171,6 +171,12 @@ flowchart LR
     pip install -r requirements.txt
     ```
 
+- Download the model weights (This will take a few minutes since the total size of models in gigabytes)
+
+    ```
+    python get_model_weights.py
+    ```
+
 - Run the Web application
     ```
     streamlit run .\Home.py
