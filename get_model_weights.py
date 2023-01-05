@@ -10,12 +10,11 @@ urls = [
  "https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt"]
 
 # Create the 'models' sub-directory if it does not exist
-if not os.path.exists('models'):
-    os.makedirs('models')
+if not os.path.exists('./assets/models'):
+    os.makedirs('./assets/models')
 
 # Download the model weights files
 for url in tqdm(urls, desc='Downloading Whisper Model Weights'):
     file_name = url.split('/')[-1]
     print(f"Going for {url.split('.')[0]} model")
-    file_path = os.path.join('models', file_name)
     urllib.request.urlretrieve(url, file_path)
