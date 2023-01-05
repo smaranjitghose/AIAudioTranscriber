@@ -46,19 +46,21 @@ def main():
     # Initialize Session State Variables
     if "page_index" not in st.session_state:
         st.session_state["page_index"] = 0
-        st.session_state["model_type"] = ""
-        st.session_state["model_name"] = ""
+        st.session_state["model_path"] = ""
         st.session_state["input_mode"] = ""
         st.session_state["file_path"] = ""
         st.session_state["transcript"] = ""
         st.session_state["lang"] = ""
         st.session_state["segments"] = []
 
-    model_list = {"Ramanujan":"tiny", "Bose":"base", "Raman": "small", "Sarabhai":"medium","Kalam":"large"}
+    model_list = {"Captain": r"./assets/models/base.pt",
+                 "Major":r"./assets/models/small.pt",
+                 "Colonel":r"./assets/models/medium.pt",
+                 "General":r"./assets/models/large-v2.pt"}
     # Create a Input Form Component
     input_mode = st.sidebar.selectbox(
                                     label="Input Mode",
-                                    options= ["Upload Audio File", "Youtube Video URL", "Online Audio URL"])
+                                    options= ["Youtube Video URL","Upload Audio File", "Online Audio URL"])
     st.session_state["input_mode"] = input_mode
 
     # Create a Form Component on the Sidebar for accepting input data and parameters
@@ -73,9 +75,8 @@ def main():
             aud_url = st.text_input(label="Enter URL for Audio File 🔗 ")
         
         # Nested Component for model size selection
-        st.session_state["model_name"] = st.radio(label="Choose Model Size 📦",
-                    options=["Ramanujan","Bose","Raman","Sarabhai","Kalam"])
-        st.session_state["model_type"] = model_list[st.session_state["model_name"]]
+        model_choice = st.radio(label="Choose Your Transciber 🪖",options=list(model_list.keys()))
+        st.session_state["model_path"] = model_list[model_choice]
         # Nested Optional Component to select segment of the clip to be used for transcription
         extra_configs = st.expander("Choose Segment ✂")
         with extra_configs:
