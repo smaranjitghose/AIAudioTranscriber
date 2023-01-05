@@ -2,6 +2,7 @@
 .streamlit/secrets.toml
 input/
 output/
+assets/models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
