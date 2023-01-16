@@ -9,10 +9,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Project Specific
-.streamlit/secrets.toml
-input/
-
 # Environments
 .env
 .venv
