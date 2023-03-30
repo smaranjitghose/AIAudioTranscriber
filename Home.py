@@ -7,7 +7,7 @@ import requests
 import json
 
 import whisper
-from whisper.utils import write_srt,write_txt,write_vtt
+from whisper.utils import get_writer
 from pytube import YouTube
 
 
@@ -255,34 +255,22 @@ def transcript_download(out_format:str):
     OUTPUT_DIR = APP_DIR / "output"
     OUTPUT_DIR.mkdir(exist_ok=True)
 
-    # Generate Transcript file as per choice
-    if out_format == "Text File":
+    #Create a dict of out_format and the file type
+    file_type_dict = {"Text File":"txt","SRT File":"srt","VTT File":"vtt"}
+
+    #Select the file type
+    file_type = file_type_dict[out_format]
+
+    if out_format in file_type_dict.keys():
+        # Generate Transcript file as per choice
+        get_writer(file_type, OUTPUT_DIR)(st.session_state["transcript"], st.session_state["file_path"])
         # Generate SRT File for Transcript  
-        st.download_button(
-                           label="Click to download 🔽",
-                           data = st.session_state["transcript"],
-                           file_name="transcripts.txt",
-                           mime = "text/plain")
-    elif out_format == "SRT File":
-        # Generate SRT File for Transcript
-        with open(OUTPUT_DIR/ "transcript.srt", "w", encoding ="utf-8") as f:
-            write_srt(st.session_state["segments"], file=f)
-        # Load the SRT File for Download
-        with open(OUTPUT_DIR/ "transcript.srt", "r", encoding ="utf-8") as f:
+        with open(OUTPUT_DIR/f'{session_id}.{file_type}', "r", encoding ="utf-8") as f:
             st.download_button(
-                           label="Click to download 🔽",
-                           data = f,
-                           file_name="transcripts.srt")
-    else:
-        # Generate SRT File for Transcript
-        with open(OUTPUT_DIR/ "transcript.vtt", "w", encoding ="utf-8") as f:
-            write_vtt(st.session_state["segments"], file=f)
-        # Load the SRT File for Download
-        with open(OUTPUT_DIR/ "transcript.vtt", "r", encoding ="utf-8") as f:
-            st.download_button(
-                           label="Click to download 🔽",
-                           data = f,
-                           file_name="transcripts.vtt")
+                            label="Click to download 🔽",
+                            data = f,
+                            file_name=f"transcripts.{file_type}",
+                            )
 
 
 
