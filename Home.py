@@ -120,7 +120,7 @@ def main():
             st.markdown(f"{st.session_state['lang']}")
             st.markdown("### Generated Transcripts📃: ")
             # st.markdown(st.session_state["transcript"])
-            stx.scrollableTextbox(st.session_state["transcript"], height = 300)
+            stx.scrollableTextbox(st.session_state["transcript"]["text"], height = 300)
         
         # Display the original Audio
         with col2:
@@ -196,7 +196,7 @@ def grab_online_video(url:str,INPUT_DIR:pathlib.Path):
 
 
 @st.cache
-def get_model(model_type:str):
+def get_model(model_type:str='tiny'):
     """
     Method to load Whisper model to disk
     """
@@ -217,7 +217,7 @@ def get_transcripts():
     """
     try:
         # Load Whisper
-        model = get_model(st.session_state["model_type"])
+        model = get_model()
         # load audio and pad/trim it to fit 30 seconds
         audio = whisper.load_audio(st.session_state["file_path"])
         # audio = whisper.pad_or_trim(audio)
@@ -225,12 +225,13 @@ def get_transcripts():
         print("--------------------------------------------")
         print("Attempting to generate transcripts ...")
         result = model.transcribe(audio)
+        print(result)
         print("Succesfully generated transcripts")
         # Grab the text and update it in session state for the app
         st.session_state["transcript"] = result["text"]
         st.session_state["lang"] = match_language(result["language"])
         st.session_state["segments"] = result["segments"]
-        # st.session_state["transcript"] = result
+        st.session_state["transcript"] = result
         # Save Transcipts:
         st.balloons()
     except:
@@ -265,7 +266,7 @@ def transcript_download(out_format:str):
         # Generate Transcript file as per choice
         get_writer(file_type, OUTPUT_DIR)(st.session_state["transcript"], st.session_state["file_path"])
         # Generate SRT File for Transcript  
-        with open(OUTPUT_DIR/f'{session_id}.{file_type}', "r", encoding ="utf-8") as f:
+        with open(OUTPUT_DIR/f'audio.{file_type}', "r", encoding ="utf-8") as f:
             st.download_button(
                             label="Click to download 🔽",
                             data = f,
