@@ -13,7 +13,7 @@ A minimalistic application to generate transcriptions for audio built using Pyth
 <p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v2_1.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 **v.0.0.2** (Transcribing an English Song - Thinkin About It)
-<p align = "center"><img src = "./assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
+<p align = "center"><img src = "./assets/doc_assets/demo_snapshot_v2_2.png" height = 300 width = 450 alt = "AITranscriber Snapshot v2"></p>
 
 **v.0.0.3** (Transcribing a [clip](https://www.youtube.com/watch?v=A1UjHboEypk) from [Lex Fridman's podcast](https://lexfridman.com/podcast/))
 
